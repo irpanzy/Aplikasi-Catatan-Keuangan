@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppTypography {
+class TypographyStyle {
   // Headings
   static TextStyle h1 = const TextStyle(
     fontSize: 40,
