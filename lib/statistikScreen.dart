@@ -1,4 +1,5 @@
 import 'package:aplikasi_catatan_keuangan/base/resource/style/colorStyles.dart';
+import 'package:aplikasi_catatan_keuangan/base/resource/style/textStyles.dart';
 import 'package:aplikasi_catatan_keuangan/base/widgets/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -17,28 +18,40 @@ class _StatisticsPageState extends State<StatisticsPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {},
-        ),
-        title: const Text(
-          'Statistik',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        title: Row(
+          children: [
+            IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () {},
+            ),
+            // Title (text)
+            Text(
+              'Statistik',
+              style: TypographyStyle.h4,
+            ),
+          ],
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(right: 24),
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                elevation: 0,
-                side: const BorderSide(color: Colors.green),
+                      backgroundColor: Colors.white,
+                      elevation: 0,
+                      side: const BorderSide(color: Colors.black),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 8.0))
+                  .copyWith(
+                shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
               ),
               child: const Text(
                 'May 2024 >',
-                style: TextStyle(color: Colors.green),
+                style: TextStyle(color: Colors.black),
               ),
             ),
           ),
@@ -46,6 +59,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
       ),
       body: Column(
         children: [
+          SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -59,15 +73,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
                   children: [
                     Text(
                       'Pemasukan',
-                      style: TextStyle(
-                        color: isIncomeSelected ? Colors.green : Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: TypographyStyle.h5,
                     ),
                     if (isIncomeSelected)
                       Container(
                         height: 2,
-                        width: 80,
+                        width: 120,
                         color: Colors.black,
                       )
                   ],
@@ -83,15 +94,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
                   children: [
                     Text(
                       'Pengeluaran',
-                      style: TextStyle(
-                        color: !isIncomeSelected ? Colors.green : Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: TypographyStyle.h5,
                     ),
                     if (!isIncomeSelected)
                       Container(
                         height: 2,
-                        width: 80,
+                        width: 120,
                         color: Colors.black,
                       )
                   ],
